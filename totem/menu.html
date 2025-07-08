@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <style>
+      /* RESET E BASE */
+      body {
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* HEADER FIXO */
+      header.header {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        padding: 6px 30px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #ffffff;
+        box-shadow: 0px 4px 4px #00000040;
+        z-index: 1000;
+        height: 60px;
+        gap: 15px;
+      }
+      .header .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .header .LOGO {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+      }
+      .header .myhr-IT-totem {
+        font-family: "Inter", Helvetica, sans-serif;
+        font-weight: 600;
+        color: #1c355e;
+        font-size: 18px;
+      }
+      .header .span {
+        color: #0091c8;
+      }
+      .header .text-wrapper-2 {
+        color: #2b6636;
+      }
+      .header .text-wrapper-3 {
+        color: #0091df;
+      }
+
+      /* CONTAINER PRINCIPAL */
+      .my-HR {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+        padding-top: 80px; /* espaço para header fixo */
+      }
+
+      /* DROPDOWN */
+      .dropdown {
+        max-width: 280px;
+        margin-top: 24px;
+      }
+      .dropdown-header {
+        font-weight: 700;
+        font-size: 24px;
+        color: #1c355e;
+        cursor: pointer;
+        user-select: none;
+        border-bottom: 2px solid #0091df;
+        padding-bottom: 8px;
+        margin-bottom: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .dropdown-header:hover {
+        color: #0071bc;
+      }
+      .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .dropdown-content.open {
+        max-height: 1000px;
+      }
+      .dropdown-button {
+        background-color: #ffffff;
+        border: 1.5px solid #0091df;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #1c355e;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .dropdown-button:hover {
+        background-color: #e5f1ff;
+        border-color: #0071bc;
+      }
+      .dropdown-button img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+      }
+      .dropdown-arrow {
+        transition: transform 0.3s ease;
+        stroke: #0091df;
+      }
+      .dropdown-arrow.open {
+        transform: rotate(90deg);
+      }
+      .dropdown-subtext {
+        font-weight: 400;
+        font-size: 14px;
+        color: #4090d6;
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* IT (Minha Tecnologia) */
+      .dropdown-header.it {
+        color: #2b6636;
+        border-color: #2b6636;
+      }
+      .dropdown-header.it:hover {
+        color: #1f4724;
+      }
+      .dropdown-content.it .dropdown-button {
+        border-color: #3f2a72;
+        color: #2b6636;
+      }
+      .dropdown-content.it .dropdown-button:hover {
+        background-color: #e6e0f7;
+        border-color: #3f2a72;
+      }
+      .subtitle-it {
+        font-weight: 400;
+        font-size: 14px;
+        color: #2b6636;
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 480px) {
+        .dropdown {
+          max-width: 95%;
+        }
+        .dropdown-header {
+          font-size: 20px;
+        }
+        .dropdown-button {
+          font-size: 14px;
+          padding: 10px 14px;
+        }
+        .dropdown-button img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER FIXO -->
+    <header class="header">
+      <div class="logo">
+        <img class="LOGO" src="img/logo.png" alt="Bayer Logo" />
+        <p class="myhr-IT-totem">
+          <span class="span">MyHR &amp;</span>
+          <span class="text-wrapper-2">&nbsp;</span>
+          <span class="text-wrapper-3">IT</span>
+          <span class="span"> Totem</span>
+        </p>
+      </div>
+    </header>
+
+    <!-- MENU PRINCIPAL -->
+    <div class="my-HR">
+      <div class="div">
+        <!-- Meus Benefícios -->
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDropdown('dropdownContent', 'dropdownArrow')">
+            Meus Benefícios
+            <svg
+              class="dropdown-arrow"
+              id="dropdownArrow"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <p class="dropdown-subtext">Consulte seus benefícios</p>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="https://bayernet.int.bayer.com/pt-pt/brazil/home/people/my_life_br_my_life_health_/health_insurance?forceurllang=true" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/hospital-34-1.svg" alt="Assistência Médica" />
+              Assistência Médica
+            </a>
+            <a href="https://bayernet.int.bayer.com/pt-pt/Brazil/Home/People/My_Life_BR_My_Life_Health_/Dental_Insurance" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/tooth-1.svg" alt="Assistência Odontológica" />
+              Assistência Odontológica
+            </a>
+            <a href="https://bayernet.int.bayer.com/pt-pt/brazil/home/people/my_life_br_my_life_health_/gympass" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/run-shoes-1.svg" alt="Wellhub (Gympass)" />
+              Wellhub (Gympass)
+            </a>
+            <a href="https://bayernet.int.bayer.com/pt-pt/brazil/shared/news/2024/06/11/auxlio-creche?forceurllang=true" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/happy-baby-1.svg" alt="Auxílio Creche" />
+              Auxílio Creche
+            </a>
+            <a href="https://bayernet.int.bayer.com/pt-pt/Brazil/Home/People/My_Life_BR_My_Life_Health_/Conte_Comigo" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/hands-heart-1.svg" alt="Programa Conte Comigo" />
+              Programa Conte Comigo
+            </a>
+          </div>
+        </div>
+
+        <!-- Meu Tempo -->
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDropdown('dropdownContentTime', 'dropdownArrowTime')">
+            Meu Tempo
+            <svg
+              class="dropdown-arrow"
+              id="dropdownArrowTime"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <p class="dropdown-subtext">Consulte informações sobre seu tempo</p>
+          <div class="dropdown-content" id="dropdownContentTime">
+            <a href="https://bayernet.int.bayer.com/pt-pt/brazil/home/people/br-time_and_attendance/vacation" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/airplane-1.svg" alt="Férias" />
+              Férias
+            </a>
+            <a href="https://myservicesprod.launchpad.cfapps.eu20.hana.ondemand.com/site#GLSE_MADOC-display&/CategorySet('YGLPT000TS')" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/progress-1.svg" alt="Folha de Ponto" />
+              Folha de Ponto
+            </a>
+            <a href="https://bayernet.int.bayer.com/pt-pt/Brazil/Home/People/BR%20Time_and_Attendance/Absences" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/single-position-1.svg" alt="Ausências" />
+              Ausências
+            </a>
+          </div>
+        </div>
+
+        <!-- Outros -->
+        <div class="dropdown">
+          <div class="dropdown-header" onclick="toggleDropdown('dropdownContentOthers', 'dropdownArrowOthers')">
+            Outros
+            <svg
+              class="dropdown-arrow"
+              id="dropdownArrowOthers"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <p class="dropdown-subtext">Consulte informações gerais sobre Recursos Humanos</p>
+          <div class="dropdown-content" id="dropdownContentOthers">
+            <a href="https://bayernet.int.bayer.com/pt-pt/brazil/home/people/br-hr-resources-employee" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/map-compass-1.svg" alt="Meu Guia de RH Brasil" />
+              Meu Guia de RH Brasil
+            </a>
+            <a href="https://myservicesprod.launchpad.cfapps.eu20.hana.ondemand.com/site#GLSE_MADOC-display&/CategorySet('RECENT7DOC')" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/folder-money-1.svg" alt="Recibos de Pagamento" />
+              Recibos de Pagamento
+            </a>
+            <a href="https://bayersi.service-now.com/efservices?id=sc_cat_item&sys_id=6e14d51087da35105b1efc46cebb35dd" class="dropdown-button" target="_blank" rel="noopener noreferrer">
+              <img class="img" src="img/c-question-1.svg" alt="ASK HR (Pergunte ao RH)" />
+              ASK HR (Pergunte ao RH)
+            </a>
+          </div>
+        </div>
+
+        <!-- Minha Tecnologia -->
+        <div class="dropdown">
+          <div class="dropdown-header it" onclick="toggleDropdown('dropdownContentIT', 'dropdownArrowIT')">
+            Minha Tecnologia
+            <svg
+              class="dropdown-arrow"
+              id="dropdownArrowIT"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              viewBox="0 0 24 24"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+          <p class="subtitle-it">Realize aberturas de chamados de IT</p>
+          <div class="dropdown-content it" id="dropdownContentIT">
+            <a href="file:///C:/Toten/itplus.html" class="dropdown-button" target="_blank" rel="noopener noreferrer" style="border-color: #112bb7; color: #112bb7;">
+              <img class="img" src="img/send-message-1.svg" alt="Conheça o IT PLUS! (WhatsApp)" />
+              Conheça o IT PLUS! (WhatsApp)
+            </a>
+            <a href="https://bayersi.service-now.com/sp?id=sc_cat_item_2&sys_id=999e98bcdb87df0074e7dcd74896193f&sysparm_category=e15706fc0a0a0aa7007fc21e1ab70c2f" class="dropdown-button" target="_blank" rel="noopener noreferrer" style="border-color: #563d7c; color: #2b6636;">
+              <img class="img" src="img/laptop-1.svg" alt="Tenho um Problema Técnico" />
+              Tenho um Problema Técnico
+            </a>
+            <a href="https://bayersi.service-now.com/sp?id=sc_home" class="dropdown-button" target="_blank" rel="noopener noreferrer" style="border-color: #563d7c; color: #2b6636;">
+              <img class="img" src="img/shopping-cart-1.svg" alt="Quero Solicitar Algo Novo" />
+              Quero Solicitar Algo Novo
+            </a>
+            <a href="https://bayersi.service-now.com/kb" class="dropdown-button" target="_blank" rel="noopener noreferrer" style="border-color: #563d7c; color: #2b6636;">
+              <img class="img" src="img/book-open-1.svg" alt="Conhecer Processos de IT" />
+              Conhecer Processos de IT
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown(contentId, arrowId) {
+        const content = document.getElementById(contentId);
+        const arrow = document.getElementById(arrowId);
+        content.classList.toggle("open");
+        arrow.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>
